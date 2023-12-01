@@ -19,7 +19,7 @@
 ## Main Image Dynamic Partitions
 /system_image             emmc     /dev/block/platform/bootdevice/by-name/system            flags=display="System Image";backup=1;flashimg=1;slotselect;
 /vendor_image             emmc     /dev/block/platform/bootdevice/by-name/vendor            flags=display="Vendor Image";backup=1;flashimg=1;slotselect;
-/product_image            emmc     /dev/block/platform/bootdevice/by-nameproduct            flags=display="Product Image";backup=1;flashimg=1;slotselect;
+/product_image            emmc     /dev/block/platform/bootdevice/by-name/product           flags=display="Product Image";backup=1;flashimg=1;slotselect;
 /system_ext_image         emmc     /dev/block/platform/bootdevice/by-name/system_ext        flags=display="System_EXT Image";backup=1;flashimg=1;slotselect;
 
 ## Default Mount Dynamic Partitions
