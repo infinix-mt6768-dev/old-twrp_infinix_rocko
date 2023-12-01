@@ -146,7 +146,7 @@ PLATFORM_VERSION := 20.1.0
 
 # TWRP-Specific configuration
 TW_THEME := portrait_hdpi
-TW_DEVICE_VERSION := X695C | Gilanggegea™
+TW_DEVICE_VERSION := For X695C | Gilanggegea™
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_NTFS_3G := true
 TW_HAS_MTP := true
