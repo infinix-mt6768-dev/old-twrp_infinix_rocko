@@ -14,13 +14,17 @@
 /vbmeta                   emmc     /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="Vbmeta";backup=1;flashimg=1;slotselect;
 /vbmeta_system            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="Vbmeta System";backup=1;flashimg=1;slotselect;
 /vbmeta_vendor            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="Vbmeta Vendor";backup=1;flashimg=1;slotselect;
-/tranfs                   ext4     /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";
+/tranfs                ext4 emmc    /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";
 
-## Dynamic Partitions
-/system_a                 emmc     /dev/block/mapper/system_a                               flags=display="System image";backup=1;flashimg=1;slotselect;wipeingui
-/vendor_a                 emmc     /dev/block/mapper/vendor_a                               flags=display="Vendor image";backup=1;flashimg=1;slotselect;wipeingui
-/product_a                emmc     /dev/block/mapper/product_a                              flags=display="Product image";backup=1;flashimg=1;slotselect;wipeingui
-/system_ext_a             emmc     /dev/block/mapper/system_ext_a                           flags=display="System_ext image";backup=1;flashimg=1;slotselect;wipeingui
+# Super partitions mount
+/system_root      ext4   /dev/block/mapper/system                flags=backup=0;removable;slotselect
+/system_ext       ext4   /dev/block/mapper/system_ext            flags=backup=0;removable;slotselect
+/vendor           ext4   /dev/block/mapper/vendor                flags=backup=0;removable;slotselect
+/product          ext4   /dev/block/mapper/product               flags=backup=0;removable;slotselect
+/system_img       emmc   /dev/block/mapper/system                flags=display="System image";backup=1;flashimg;slotselect
+/system_ext_img   emmc   /dev/block/mapper/system_ext            flags=display="System_ext image";backup=1;flashimg;slotselect
+/vendor_img       emmc   /dev/block/mapper/vendor                flags=display="Vendor image";backup=1;flashimg;slotselect
+/product_img      emmc   /dev/block/mapper/product               flags=display="Product image";backup=1;flashimg;slotselect 
 
 ## Sensitif Data (IMEI, SIM, Device Info)
 # below four partitions are ext4, but we are using only for backup so emmc

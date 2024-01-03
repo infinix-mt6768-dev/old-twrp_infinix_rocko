@@ -1,4 +1,4 @@
-# Android device tree for Infinix Infinix X693 (Infinix-X693)
+# Android device tree for Infinix Note 10 (X693)
 
 ```
 #
@@ -8,3 +8,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 ```
+## Status
+
+Current state of features (from [here](https://twrp.me/faq/OfficialMaintainer.html)):
