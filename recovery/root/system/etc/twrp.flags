@@ -6,7 +6,6 @@
 
 ## User-Writable
 /boot                     emmc     /dev/block/platform/bootdevice/by-name/boot              flags=display="Boot";backup=1;flashimg=1;slotselect;
-/boot_para                emmc     /dev/block/platform/bootdevice/by-name/boot_para         flags=display="Boot Para";backup=0;
 /lk                       emmc     /dev/block/platform/bootdevice/by-name/lk                flags=display="Bootloader";backup=1;flashimg=1;slotselect;
 /logo                     emmc     /dev/block/platform/bootdevice/by-name/logo              flags=display="Boot Logo";backup=1;flashimg=1;slotselect;
 /dtbo                     emmc     /dev/block/platform/bootdevice/by-name/dtbo              flags=display="Dtbo";backup=1;flashimg=1;slotselect;
@@ -14,20 +13,18 @@
 /vbmeta                   emmc     /dev/block/platform/bootdevice/by-name/vbmeta            flags=display="Vbmeta";backup=1;flashimg=1;slotselect;
 /vbmeta_system            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_system     flags=display="Vbmeta System";backup=1;flashimg=1;slotselect;
 /vbmeta_vendor            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="Vbmeta Vendor";backup=1;flashimg=1;slotselect;
-/tranfs                   ext4     /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";
 
-## Main Image A Partitions
-/system_image             emmc     /dev/block/mapper/system                                 flags=backup=1;display="System Image";flashimg=1;slotselect;
-/vendor_image             emmc     /dev/block/mapper/vendor                                 flags=backup=1;display="Vendor Image";flashimg=1;slotselect;
-/product_image            emmc     /dev/block/mapper/product                                flags=backup=1;display="Product Image";flashimg=1;slotselect;
-/system_ext_image         emmc     /dev/block/mapper/system_ext                             flags=backup=1;display="System_ext Image";flashimg=1;slotselect;
+## Dynamic Partitions
+/system                   ext4     /dev/block/mapper/system                                 wait,avb=vbmeta,logical,first_stage_mount,flags=backup=1;display="System"
+/system_ext_a             ext4     /dev/block/mapper/system_ext_a                           wait,avb=vbmeta,logical,first_stage_mount,flags=backup=1;display="System_EXT"
+/vendor_a                 ext4     /dev/block/mapper/vendor_a                               wait,avb=vbmeta,logical,first_stage_mount,flags=backup=1;display="Vendor"
+/product_a                ext4     /dev/block/mapper/product_a                              wait,avb=vbmeta,logical,first_stage_mount,flags=backup=1;display="Product"
 
 ## Main Auto A Partitions
-/system_root              ext4     /dev/block/platform/bootdevice/by-name/system            flags=display="System_root";backup=0;slotselect;wipeingui;
-/system_a                 auto     /dev/block/mapper/system_a                               flags=display="System";wipeingui
-/system_ext_a             auto     /dev/block/mapper/system_ext_a                           flags=display="System_ext";wipeingui
-/vendor_a                 auto     /dev/block/mapper/vendor_a                               flags=display="Vendor";wipeingui
-/product_a                auto     /dev/block/mapper/product_a                              flags=display="Product";wipeingui
+/system_a                 emmc     /dev/block/mapper/system_a                               flags=display="System Image";backup=1;flashimg=1;wipeingui
+/system_ext_a             emmc     /dev/block/mapper/system_ext_a                           flags=display="System_ext Image";backup=1;flashimg=1;wipeingui
+/vendor_a                 emmc     /dev/block/mapper/vendor_a                               flags=display="Vendor Image";backup=1;flashimg=1;wipeingui
+/product_a                emmc     /dev/block/mapper/product_a                              flags=display="Product Image";backup=1;flashimg=1;wipeingui
 
 ## Sensitif Data (IMEI, SIM, Device Info)
 # below four partitions are ext4, but we are using only for backup so emmc
@@ -42,27 +39,10 @@
 /persistent               emmc     /dev/block/platform/bootdevice/by-name/frp               flags=display="Persistent";backup=1
 
 ## Firmware
-/proinfo                  emmc     /dev/block/platform/bootdevice/by-name/proinfo           flags=display=proinfo
-/para                     emmc     /dev/block/platform/bootdevice/by-name/para              flags=display=para
-/misc                     emmc     /dev/block/platform/bootdevice/by-name/misc              flags=display=misc
-/expdb                    emmc     /dev/block/platform/bootdevice/by-name/expdb             flags=display=expdb
-/seccfg                   emmc     /dev/block/platform/bootdevice/by-name/seccfg            flags=display=seccfg
-/tee                      emmc     /dev/block/platform/bootdevice/by-name/tee               flags=display=tee
-/tee2                     emmc     /dev/block/platform/bootdevice/by-name/tee2              flags=display=tee2
-/scp                      emmc     /dev/block/platform/bootdevice/by-name/scp               flags=display=scp
-/scp2                     emmc     /dev/block/platform/bootdevice/by-name/scp2              flags=display=scp2
-/sspm                     emmc     /dev/block/platform/bootdevice/by-name/sspm              flags=display=sspm
-/sspm_2                   emmc     /dev/block/platform/bootdevice/by-name/sspm_2            flags=display=sspm_2
-/md1img                   emmc     /dev/block/platform/bootdevice/by-name/md1img            flags=display="Modem";backup=1
-/md1dsp                   emmc     /dev/block/platform/bootdevice/by-name/md1dsp            flags=display=md1dsp
-/cam_vpu1                 emmc     /dev/block/platform/bootdevice/by-name/cam_vpu1          flags=display=cam_vpu1
-/cam_vpu2                 emmc     /dev/block/platform/bootdevice/by-name/cam_vpu2          flags=display=cam_vpu2
-/cam_vpu3                 emmc     /dev/block/platform/bootdevice/by-name/cam_vpu3          flags=display=cam_vpu3
-/gz                       emmc     /dev/block/platform/bootdevice/by-name/gz                flags=display=gz
-/gz2                      emmc     /dev/block/platform/bootdevice/by-name/gz2               flags=display=gz2
-/spmfw                    emmc     /dev/block/platform/bootdevice/by-name/spmfw             flags=display=spmfw
-/otp                      emmc     /dev/block/platform/bootdevice/by-name/otp               flags=display=otp
-/tkv                      emmc     /dev/block/platform/bootdevice/by-name/tkv               flags=display=tkv
+/proinfo                  emmc     /dev/block/platform/bootdevice/by-name/proinfo           flags=display="Proinfo";backup=1;flashimg=1
+/para                     emmc     /dev/block/platform/bootdevice/by-name/para              flags=display="Para";backup=1;flashimg=1
+/misc                     emmc     /dev/block/platform/bootdevice/by-name/misc              flags=display="Misc";backup=1;flashimg=1
+/tranfs                   ext4     /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";backup=1;flashimg=1
 
 ## Removable
 /external_sd              vfat     /dev/block/mmcblk0p1         /dev/block/mmcblk0          flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable                      
