@@ -15,18 +15,12 @@
 /vbmeta_vendor            emmc     /dev/block/platform/bootdevice/by-name/vbmeta_vendor     flags=display="Vbmeta Vendor";backup=1;flashimg=1;slotselect;
 /tranfs                   ext4     /dev/block/platform/bootdevice/by-name/tranfs            flags=display="Tranfs";
 
-## Main Image A Partitions
-/system_image             emmc     /dev/block/mapper/system                                 flags=backup=1;display="System Image";flashimg=1;slotselect;
-/vendor_image             emmc     /dev/block/mapper/vendor                                 flags=backup=1;display="Vendor Image";flashimg=1;slotselect;
-/product_image            emmc     /dev/block/mapper/product                                flags=backup=1;display="Product Image";flashimg=1;slotselect;
-/system_ext_image         emmc     /dev/block/mapper/system_ext                             flags=backup=1;display="System_ext Image";flashimg=1;slotselect;
-
 ## Main Auto A Partitions
-/system_root              ext4     /dev/block/platform/bootdevice/by-name/system            flags=display="System_root";backup=0;slotselect;wipeingui;
-/system_a                 auto     /dev/block/mapper/system_a                               flags=display="System";wipeingui
-/system_ext_a             auto     /dev/block/mapper/system_ext_a                           flags=display="System_ext";wipeingui
-/vendor_a                 auto     /dev/block/mapper/vendor_a                               flags=display="Vendor";wipeingui
-/product_a                auto     /dev/block/mapper/product_a                              flags=display="Product";wipeingui
+/system_root              ext4     /dev/block/platform/bootdevice/by-name/system            flags=display="System_root";backup=0
+/system_a                 emmc     /dev/block/mapper/system_a                               flags=display="System";backup=1
+/system_ext_a             emmc     /dev/block/mapper/system_ext_a                           flags=display="System_ext";backup=1
+/vendor_a                 emmc     /dev/block/mapper/vendor_a                               flags=display="Vendor";backup=1
+/product_a                emmc     /dev/block/mapper/product_a                              flags=display="Product";backup=1
 
 ## Sensitif Data (IMEI, SIM, Device Info)
 # below four partitions are ext4, but we are using only for backup so emmc
