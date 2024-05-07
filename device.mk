@@ -17,13 +17,12 @@
 #
 
 LOCAL_PATH := device/infinix/X693
-PRODUCT_PLATFORM := mt6768
 
-# V A/B
+# VAB
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-# A/B
+# AB
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     system \
@@ -39,6 +38,9 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
+
+# Dynamic Partition
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
