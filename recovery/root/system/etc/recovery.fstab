@@ -7,7 +7,7 @@ vendor                                     /vendor          ext4                
 product                                    /product         ext4                ro wait,slotselect,logical
 
 # User partitions
-/dev/block/by-name/userdata     /data       f2fs noatime,nosuid,nodev,discard,noflush_merge,reserve_root=134217,resgid=1065,inlinecrypt,tran_gc wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2,keydirectory=/metadata/vold/metadata_encryption,
-/dev/block/by-name/md_udc       /metadata   ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
-/dev/block/by-name/tranfs       /tranfs     ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable,nofail,first_stage_mount
-/dev/block/by-name/misc         /misc       emmc defaults defaults 
+/dev/block/platform/bootdevice/by-name/userdata     /data       f2fs noatime,nosuid,nodev,discard,noflush_merge,reserve_root=134217,resgid=1065,inlinecrypt,tran_gc wait,check,formattable,quota,latemount,resize,reservedsize=128m,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2,keydirectory=/metadata/vold/metadata_encryption,
+/dev/block/platform/bootdevice/by-name/md_udc       /metadata   ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
+/dev/block/platform/bootdevice/by-name/tranfs       /tranfs     ext4 noatime,nosuid,nodev,noauto_da_alloc,discard wait,check,formattable,nofail,first_stage_mount
+/dev/block/platform/bootdevice/by-name/misc         /misc       emmc defaults defaults 
